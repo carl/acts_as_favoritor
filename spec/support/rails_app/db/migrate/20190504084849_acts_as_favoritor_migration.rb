@@ -3,8 +3,8 @@
 class ActsAsFavoritorMigration < ActiveRecord::Migration[5.2]
   def self.up
     create_table :favorites, force: true do |t|
-      t.references :favoritable, polymorphic: true, null: false
-      t.references :favoritor, polymorphic: true, null: false
+      t.references :favoritable, type: :uuid, polymorphic: true, null: false
+      t.references :favoritor, type: :uuid, polymorphic: true, null: false
       t.string :scope, default: ActsAsFavoritor.configuration.default_scope,
                        null: false,
                        index: true
